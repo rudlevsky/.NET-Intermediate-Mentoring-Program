@@ -10,6 +10,8 @@ namespace AsyncAwait.Task1.CancellationTokens
 
             for (int i = 0; i < n; i++)
             {
+                token.ThrowIfCancellationRequested();
+
                 sum += (i + 1);
                 Thread.Sleep(10);
             }
