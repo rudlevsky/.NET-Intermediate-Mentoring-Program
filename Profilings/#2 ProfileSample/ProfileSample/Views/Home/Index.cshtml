@@ -1,0 +1,13 @@
+﻿@model List<string>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <img src="@item" width="300" height="150"/>
+    }
+</div>
