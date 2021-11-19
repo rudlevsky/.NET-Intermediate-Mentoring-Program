@@ -7,7 +7,7 @@ namespace GameOfLife
 	public partial class MainWindow : Window
     {
         private readonly Grid mainGrid;
-		private readonly DispatcherTimer timer;   //  Generation timer
+		private readonly DispatcherTimer timer;
         private int genCounter;
 		private AdWindow[] adWindow;
 
@@ -42,6 +42,7 @@ namespace GameOfLife
             for (int i = 0; i < 2; i++)
             {
                 adWindow[i].Closed -= AdWindowOnClosed;
+                adWindow[i] = null;
             }
 
             adWindow = null;
@@ -65,8 +66,7 @@ namespace GameOfLife
         private void OnTimer(object sender, EventArgs e)
         {
             mainGrid.Update();
-            genCounter++;
-            lblGenCount.Content = "Generations: " + genCounter;
+            lblGenCount.Content = $"Generations: {genCounter++}";
         }
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
